@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dowry Price Calculator</title>
+
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #699899;
+            margin: 0;
+            padding: 20px;
+            background-color: #f1a;
+        }
+
+        .container {
+            max-width: 600px; /* square shape */
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        select {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: calc(100% - 16px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Aligning checkboxes and radio buttons */
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            gap: 10px; /* Space between items */
+            flex-wrap: wrap; /* Allow wrapping if needed */
+            margin-bottom: 15px;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Styling the button */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Dowry Price Calculator</h2>
+
+        <!-- Education Dropdown -->
+        <label for="education">Bride/Groom's Education:</label>
+        <select id="education">
+            <option value="1.5">Undergraduate degree</option>
+            <option value="1.2">College degree</option>
+            <option value="1.05">High school degree</option>
+            <option value="0.9">Middle school degree</option>
+        </select>
+
+        <!-- Family Net Worth Dropdown -->
+        <label for="netWorth">Bride/Groom's Family Net Worth:</label>
+        <select id="netWorth">
+            <option value="2">More than $10,000</option>
+            <option value="1.5">Between $5,000 and $10,000</option>
+            <option value="1.2">Less than $5,000</option>
+        </select>
+
+        <!-- Caste Dropdown -->
+        <label for="caste">Bride/Groom's Caste:</label>
+        <select id="caste">
+            <option value="100">Brahmin</option>
+            <option value="50">Kshatriya</option>
+            <option value="20">Vaishya</option>
+            <option value="10">Shudra</option>
+            <option value="-50">Varna - untouchable</option>
+        </select>
+
+        <!-- Skills Checkboxes -->
+        <label>Bride/Groom's Skills:</label>
+        <div class="checkbox-group">
+            <div><input type="checkbox" id="musicSkill" value="10"> Plays a musical instrument (+10$)</div>
+            <div><input type="checkbox" id="cookSkill" value="20"> Good cook (+20$)</div>
+            <div><input type="checkbox" id="characterSkill" value="15"> Easygoing character (+15$)</div>
+            <div><input type="checkbox" id="singSkill" value="10"> Sings well (+10$)</div>
+        </div>
+
+        <!-- Age Radio Buttons -->
+        <label>Bride/Groom's Age:</label>
+        <div class="radio-group">
+            <div><input type="radio" name="age" value="1.5"> 18-23 (Coefficient 1.5)</div>
+            <div><input type="radio" name="age" value="1.2"> 24-27 (Coefficient 1.2)</div>
+            <div><input type="radio" name="age" value="0.95"> 28+ (Coefficient 0.95)</div>
+        </div>
+
+        <!-- Reputation Checkboxes -->
+        <label>Bride/Groom's Reputation:</label>
+        <div class="checkbox-group">
+            <div><input type="checkbox" id="parentGossip" value="0.85"> Gossips about parent's attitude (Coefficient 0.85)</div>
+            <div><input type="checkbox" id="characterGossip" value="0.9"> Gossips about character (Coefficient 0.9)</div>
+            <div><input type="checkbox" id="generalGossip" value="-20"> General gossips (-20$)</div>
+        </div>
+
+        <!-- Button to calculate the price -->
+        <button onclick="calculatePrice()">Calculate Price</button>
+
+        <!-- Display result -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
