@@ -1,42 +1,39 @@
-function calculatePrice() {
-    let basePrice = 100; // Starting bid
-
-    // Get education coefficient
-    let education = parseFloat(document.getElementById('education').value);
-
-    // Get family net worth coefficient
-    let netWorth = parseFloat(document.getElementById('netWorth').value);
-
-    // Get caste value
-    let caste = parseFloat(document.getElementById('caste').value);
-
-    // Get selected age coefficient
+function showPrice() {
+    let edx = parseFloat(document.getElementById("education").value);
+    let moneyx = parseFloat(document.getElementById("wallet").value);
+    let statusx = parseFloat(document.getElementById("caste").value);
+    let bonus = statusx;
+    let repminus =1;
+    let agex = 1;
+    if (document.getElementById("music").checked){
+        bonus += 10;
+    } 
+    if (document.getElementById("cook").checked){
+        bonus += 20;
+    }
+    if (document.getElementById("character").checked){
+        bonus += 15;
+    } 
+    if (document.getElementById("sing").checked){
+        bonus += 10;
+    }
     let ageElems = document.getElementsByName('age');
-    let ageCoefficient = 1;
+
+    if (document.getElementById("parent").checked) {
+        repminus *= 0.85;
+    }  
+    if (document.getElementById("character").checked){
+        repminus *= 0.9;
+    } 
+    if (document.getElementById("general").checked){
+        bonus -= 20;
+    }
     for (let i = 0; i < ageElems.length; i++) {
         if (ageElems[i].checked) {
-            ageCoefficient = parseFloat(ageElems[i].value);
+            agex = parseFloat(ageElems[i].value);
             break;
         }
     }
-
-    // Calculate skills price
-    let skillsBonus = 0;
-    if (document.getElementById('musicSkill').checked) skillsBonus += 10;
-    if (document.getElementById('cookSkill').checked) skillsBonus += 20;
-    if (document.getElementById('characterSkill').checked) skillsBonus += 15;
-    if (document.getElementById('singSkill').checked) skillsBonus += 10;
-
-    // Reputation impact
-    let reputationCoefficient = 1;
-    if (document.getElementById('parentGossip').checked) reputationCoefficient *= 0.85;
-    if (document.getElementById('characterGossip').checked) reputationCoefficient *= 0.9;
-    if (document.getElementById('generalGossip').checked) basePrice -= 20;
-
-    // Calculate final price
-    let finalPrice = basePrice * education * netWorth * ageCoefficient * reputationCoefficient;
-    finalPrice += caste + skillsBonus;
-
-    // Update result in the DOM
-    document.getElementById('result').innerHTML = `The final dowry price is: $${finalPrice.toFixed(2)}`;
+    let cost = (edx * moneyx  * agex*repminus*1)* (bonus+100);
+    document.getElementById("result").textContent = cost.toFixed(1);
 }
