@@ -34,6 +34,6 @@ function showPrice() {
             break;
         }
     }
-    let cost = (edx * moneyx  * agex*repminus*1)* (bonus+100);
+    let cost = (edx * moneyx  * agex*repminus*1)*100 + (bonus);
     document.getElementById("result").textContent = cost.toFixed(1);
 }
