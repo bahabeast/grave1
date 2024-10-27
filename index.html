@@ -5,17 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dowry Price</title>
 </head>
-
+<style>
+    .container{
+        margin-left:auto;
+        margin-right: auto;
+        width: 380px;
+        background-color: cadetblue;
+        text-align: center;
+        border-radius: 20px;
+    }
+    
+    .container *{
+        margin:0 auto;
+        text-align: center;
+        margin-top: 4px;;
+        
+    }
+    label{
+        font-weight: bold;
+    }
+</style>
 <body>
     <div class="container">
         <h2>Dowry Price</h2>
+        <label for="partnername">Partner name:</label><br>
+        <input type="text" id="partnername"><br>
+        <label for="startingbid">Starting bid:</label><br>
+        <input type="text" id="startingbid"><br>
         <label for="education">Education:</label>
         <select id="education">
             <option value="1.5">undergraduate degree</option>
             <option value="1.2">college degree</option>
             <option value="1.05">high school degree</option>
             <option value="0.9">middle school degree</option>
-        </select>
+        </select><br>
         <label for="caste">Caste:</label>
         <select id="caste">
             <option value="100">brahmin</option>
@@ -23,20 +46,20 @@
             <option value="20">vaishya</option>
             <option value="10">shudra</option>
             <option value="-50">varna - untouchable</option>
-        </select>
+        </select><br>
         <label for="wallet">Family Net Worth:</label>
         <select id="wallet">
             <option value="2">more than $10,000</option>
             <option value="1.5">$5,000 - $10,000</option>
             <option value="1.2">less than $5,000</option>
         </select>
-
+<br>
         <label>Skills:</label>
         <div class="checkbox-group">
-            <div><input type="checkbox" id="cook" value="20"> Good cook</div>
-            <div><input type="checkbox" id="music" value="10"> Plays a musical instrument</div>
-            <div><input type="checkbox" id="character" value="15"> Easygoing character</div>
-            <div><input type="checkbox" id="sing" value="10"> Sings well </div>
+            <div><input type="checkbox" class="skills" value="20"> Good cook</div>
+            <div><input type="checkbox" class="skills" value="10"> Plays a musical instrument</div>
+            <div><input type="checkbox" class="skills" value="15"> Easygoing character</div>
+            <div><input type="checkbox" class="skills" value="10"> Sings well </div>
         </div>
         <label>Age:</label>
         <div class="radio-group">
@@ -46,12 +69,15 @@
         </div>
         <label>Reputation:</label>
         <div class="checkbox-group">
+            <div><input type="checkbox" id="general" value="20.0"> General gossips</div>
             <div><input type="checkbox" id="parent" value="0.85"> Gossips about parent's attitude</div>
-            <div><input type="checkbox" id="character" value="0.9"> Gossips about character</div>
-            <div><input type="checkbox" id="general" value="-20"> General gossips</div>
+            <div><input type="checkbox" id="characters" value="0.9"> Gossips about character</div>
+            
         </div>
-        <button onclick="showPrice()">Calculate Price</button>
+        <textarea type="text" id="loveletter" maxlength="500"></textarea><br>
+        <button id="calculateButton">Calculate Price</button>
         <div class="result" id="result"></div>
+        
     </div>
 
     <script src="script.js"></script>
